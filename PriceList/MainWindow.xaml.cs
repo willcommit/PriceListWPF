@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PriceList.Classes;
 
 namespace PriceList
 {
@@ -23,6 +24,20 @@ namespace PriceList
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ImportExcel_Click(object sender, RoutedEventArgs e)
+        {
+            Xlxs xlxs = new Xlxs();
+            xlxs.Pwd = "fsa123a";
+            xlxs.setFileName();
+            xlxs.ReadXlxsToDb();
+            MessageBox.Show("COMPLETE!");
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
