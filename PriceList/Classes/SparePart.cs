@@ -14,5 +14,10 @@ namespace PriceList.Classes
         public string Description { get; set; }
         public string Type { get; set; }
         public string FCAPrice{ get; set; }
+
+        public override string ToString()
+        {
+            return $"{ItemCode} - {Description} - {Type} - {FCAPrice}";
+        }
     }
 }

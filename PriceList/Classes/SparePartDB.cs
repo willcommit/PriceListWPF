@@ -4,24 +4,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PriceList.Classes
 {
     class SparePartDB
     {
-        public string databasePath { get; set; }
-
-        public void SetDatabasePath()
+        public static string databasePath { get; set; }
+        public static List<SparePart> parts = new List<SparePart>();
+        public static void SetDatabasePath()
         {
             string databaseName = "SpareParts.db";
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             databasePath = System.IO.Path.Combine(folderPath, databaseName);
         }
 
-        public void SetDatabasePath(string path)
+        public static void ReadDatabase()
         {
-            databasePath = path;
+            using(SQLiteConnection connection = new SQLiteConnection(databasePath))
+            {
+                try
+                {
+                    parts = connection.Table<SparePart>().ToList();                  
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Ops..." + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
         }
+
+        
 
         public void InsertData (SparePart part)
         {
@@ -29,6 +43,7 @@ namespace PriceList.Classes
             {
                 connection.CreateTable<SparePart>();
                 connection.Insert(part);
+                
             } 
         }
 

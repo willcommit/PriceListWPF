@@ -16,7 +16,6 @@ namespace PriceList.Classes
     {
         public string FileName { get; set; }
         private string pwd;
-        private List<SparePart> parts = new List<SparePart>();
 
         public string Pwd
         {
@@ -34,10 +33,10 @@ namespace PriceList.Classes
         public void ReadXlxsToDb()
         {
             SparePartDB sparePartDB = new SparePartDB();
-            sparePartDB.SetDatabasePath();
             FileInfo newFile = new FileInfo(FileName);
             try
             {
+                SparePartDB.parts.Clear();
                 ExcelPackage newPackage = new ExcelPackage(newFile, pwd);
                 var sheet = newPackage.Workbook.Worksheets.First();
 
@@ -52,10 +51,10 @@ namespace PriceList.Classes
                     sparePart.Type = sheet.Cells[row, 3].Text.Trim();
                     sparePart.FCAPrice = sheet.Cells[row, 5].Text.Trim();
 
-                    parts.Add(sparePart);               
+                    SparePartDB.parts.Add(sparePart);               
                 }
 
-                sparePartDB.InsertDataFast(parts);
+                sparePartDB.InsertDataFast(SparePartDB.parts);
             }
             catch (Exception e)
             {

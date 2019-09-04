@@ -24,6 +24,8 @@ namespace PriceList
         public MainWindow()
         {
             InitializeComponent();
+            SparePartDB.SetDatabasePath();
+            PopulateListView();
         }
 
         private void ImportExcel_Click(object sender, RoutedEventArgs e)
@@ -33,10 +35,33 @@ namespace PriceList
             xlxs.setFileName();
             xlxs.ReadXlxsToDb();
             MessageBox.Show("COMPLETE!");
+            PopulateListView();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            NewPartsWindow newPartsWindow = new NewPartsWindow();
+            newPartsWindow.ShowDialog();
+            PopulateListView();
+        }
+
+        public void PopulateListView()
+        {
+            SparePartDB.ReadDatabase();
+
+            try
+            {
+                if (SparePartDB.parts != null)
+                {
+                    sparePartListView.ItemsSource = SparePartDB.parts;
+                    listSizeLabel.Content = sparePartListView.Items.Count;
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Ops..." + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
     }

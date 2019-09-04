@@ -6,22 +6,27 @@
         xmlns:local="clr-namespace:PriceList"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Button Margin="0,20" Grid.Column="1" Grid.Row="2" Content="Edit Selected" Click="Edit_Click"/>
-        <Button Margin="0,20" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="listSizeLabel" Margin="10,40" Grid.Column="1" Grid.Row="0"/>
+            <Button Margin="10,40" Grid.Column="1" Grid.Row="2" Content="Edit Selected" Click="Edit_Click"/>
+            <Button Margin="10,40" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>
+        </Grid>
+        <ListView x:Name="sparePartListView" Grid.Column="1"></ListView>
     </Grid>
 </Window>
