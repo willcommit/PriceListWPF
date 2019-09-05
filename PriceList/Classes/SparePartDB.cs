@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace PriceList.Classes
 {
-    class SparePartDB
+    static class SparePartDB
     {
         public static string databasePath { get; set; }
         public static List<SparePart> parts = new List<SparePart>();
@@ -35,9 +35,7 @@ namespace PriceList.Classes
             }
         }
 
-        
-
-        public void InsertData (SparePart part)
+        public static void InsertData (SparePart part)
         {
             using (SQLiteConnection connection = new SQLiteConnection(databasePath))
             {
@@ -47,11 +45,11 @@ namespace PriceList.Classes
             } 
         }
 
-        public void InsertDataFast(List<SparePart> parts)
+        public static void PopulateDataBase()
         {
-
             using (SQLiteConnection connection = new SQLiteConnection(databasePath))
             {
+                //connection.DropTable<SparePart>();
                 connection.CreateTable<SparePart>();
                 connection.RunInTransaction(() =>
                 {

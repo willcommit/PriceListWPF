@@ -5,28 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PriceList"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Spare Parts Pricelist" Height="600" Width="1000">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="7*"/>
-        </Grid.ColumnDefinitions>
+    <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="2" Content="Edit Selected" Click="Edit_Click"/>-->
+        <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>   -->
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Padding="0,3" Background="LightGray" >
+            <MenuItem Header="File">
+                <MenuItem Header="Import Excel" Click="MenuItemImportExcel_Click"/>
+                <MenuItem Header="Import Protected Excel" Click="MenuItemImportProtectedExcel_Click"/>
+                <Separator/>
+                <MenuItem Header="Export Excel"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="MenuItemExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Settings">
+                
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="sparePartDataGrid" AlternatingRowBackground="AliceBlue"></DataGrid>
+    </DockPanel>
+        
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Label x:Name="listSizeLabel" Margin="10,40" Grid.Column="1" Grid.Row="0"/>
-            <Button Margin="10,40" Grid.Column="1" Grid.Row="2" Content="Edit Selected" Click="Edit_Click"/>
-            <Button Margin="10,40" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>
-        </Grid>
-        <ListView x:Name="sparePartListView" Grid.Column="1"></ListView>
-    </Grid>
 </Window>

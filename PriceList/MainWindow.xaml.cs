@@ -28,22 +28,12 @@ namespace PriceList
             PopulateListView();
         }
 
-        private void ImportExcel_Click(object sender, RoutedEventArgs e)
-        {
-            Xlxs xlxs = new Xlxs();
-            xlxs.Pwd = "fsa123a";
-            xlxs.setFileName();
-            xlxs.ReadXlxsToDb();
-            MessageBox.Show("COMPLETE!");
-            PopulateListView();
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            NewPartsWindow newPartsWindow = new NewPartsWindow();
-            newPartsWindow.ShowDialog();
-            PopulateListView();
-        }
+        //private void Edit_Click(object sender, RoutedEventArgs e)
+        //{
+        //    NewPartsWindow newPartsWindow = new NewPartsWindow();
+        //    newPartsWindow.ShowDialog();
+        //    PopulateListView();
+        //}
 
         public void PopulateListView()
         {
@@ -53,8 +43,8 @@ namespace PriceList
             {
                 if (SparePartDB.parts != null)
                 {
-                    sparePartListView.ItemsSource = SparePartDB.parts;
-                    listSizeLabel.Content = sparePartListView.Items.Count;
+                    sparePartDataGrid.ItemsSource = SparePartDB.parts;
+                    //listSizeLabel.Content = sparePartDataGrid.Items.Count;
                 }
             }
             catch (Exception e)
@@ -62,7 +52,38 @@ namespace PriceList
 
                 MessageBox.Show("Ops..." + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
+
+        private void MenuItemImportExcel_Click(object sender, RoutedEventArgs e)
+        {
+            Xlxs xlxs = new Xlxs();
+            xlxs.setFileName();
+            var package = xlxs.readExcel();
+
+            SparePartDB.parts.Clear();
+            xlxs.populatePartsList(package, SparePartDB.parts);
+            SparePartDB.PopulateDataBase();
+            MessageBox.Show("COMPLETE!");
+            PopulateListView();
+        }
+        
+        private void MenuItemImportProtectedExcel_Click(object sender, RoutedEventArgs e)
+        {
+            Xlxs xlxs = new Xlxs();
+            xlxs.setFileName();
+            var package = xlxs.readExcel("fsa123a");
+
+            SparePartDB.parts.Clear();
+            xlxs.populatePartsList(package, SparePartDB.parts);
+            SparePartDB.PopulateDataBase();
+            MessageBox.Show("COMPLETE!");
+            PopulateListView();
+        }
+
+        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
     }
 }
