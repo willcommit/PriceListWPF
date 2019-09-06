@@ -23,7 +23,7 @@
                 
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="sparePartDataGrid" AlternatingRowBackground="AliceBlue"></DataGrid>
+        <DataGrid x:Name="sparePartDataGrid" AlternatingRowBackground="AliceBlue" CanUserAddRows="False"></DataGrid>
     </DockPanel>
         
 
