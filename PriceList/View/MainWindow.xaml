@@ -5,26 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PriceList"
         mc:Ignorable="d"
-        Title="Spare Parts Pricelist" Height="600" Width="1000">
+        Title="Prislista" Height="600" Width="1000">
 
     <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="2" Content="Edit Selected" Click="Edit_Click"/>-->
         <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>   -->
     <DockPanel>
         <Menu DockPanel.Dock="Top" Padding="0,3" Background="LightGray" >
-            <MenuItem Header="File">
-                <MenuItem Header="Import Excel" Click="MenuItemImportExcel_Click"/>
-                <MenuItem Header="Import Protected Excel" Click="MenuItemImportProtectedExcel_Click"/>
-                <Separator/>
-                <MenuItem Header="Export Excel"/>
-                <Separator/>
-                <MenuItem Header="Exit" Click="MenuItemExit_Click"/>
+            <MenuItem Header="Fil">
+                <MenuItem Header="Lägg till produkt" Click="AddProduct_Click"/>
+                <Separator></Separator>
+                <MenuItem Header="Avsluta" Click="MenuItemExit_Click"/>
             </MenuItem>
-            <MenuItem Header="Settings">
-                
+            
+            <MenuItem Header="Inställningar">
+
+            </MenuItem>
+            <MenuItem Header="Importera">
+                <MenuItem Header="Importera CSV" Click="MenuItemImportExcel_Click"/>
+                <MenuItem Header="Importera Excel" Click="MenuItemImportExcel_Click"/>
+                <MenuItem Header="Importera Excel med lösenord" Click="MenuItemImportProtectedExcel_Click"/>
+
+            </MenuItem>
+            <MenuItem Header="Exportera">
+                <MenuItem Header="Exportera till Navision"/>
+                <MenuItem Header="Exportera till Excel"/>
+                <MenuItem Header="Exportera till offertmall"/>
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="sparePartDataGrid" AlternatingRowBackground="AliceBlue" CanUserAddRows="False"></DataGrid>
+        <DataGrid x:Name="sparePartDataGrid" AlternatingRowBackground="AliceBlue" CanUserAddRows="False"
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+            
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="EXPORT" Binding="{Binding Path=Export}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Path=ItemCode}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         TextChanged="TextBox_TextChanged_ItemCode"/>
+                                <TextBlock>Item Code</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Type}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         TextChanged="TextBox_TextChanged_Description"/>
+                                <TextBlock>Type</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Description}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         TextChanged="TextBox_TextChanged_Type"/>
+                                <TextBlock >Description</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=FCAPrice}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         TextChanged="TextBox_TextChanged_Price"/>
+                                <TextBlock>Price</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
-        
-
 </Window>

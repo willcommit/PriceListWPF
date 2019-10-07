@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace PriceList.Classes
 {
-    class SparePart
+    public class SparePart
     {
         [PrimaryKey]
         public string ItemCode { get; set; }
         public string Description { get; set; }
         public string Type { get; set; }
         public string FCAPrice{ get; set; }
+        public bool Export { get; set; }
 
         public override string ToString()
         {

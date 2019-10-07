@@ -25,7 +25,7 @@ namespace PriceList.Classes
             {
                 try
                 {
-                    parts = connection.Table<SparePart>().ToList();                  
+                    parts = (connection.Table<SparePart>().ToList()).OrderBy(p => p.Type).ToList();                  
                 }
                 catch (Exception e)
                 {

@@ -19,9 +19,9 @@ namespace PriceList
     /// <summary>
     /// Interaction logic for NewPartsWindows.xaml
     /// </summary>
-    public partial class NewPartsWindow : Window
+    public partial class AddProductWindow : Window
     {
-        public NewPartsWindow()
+        public AddProductWindow()
         {
             InitializeComponent();
         }
@@ -31,17 +31,21 @@ namespace PriceList
             SparePart sparePart = new SparePart()
             {
                 ItemCode = ItemCodeTextBox.Text,
-                Description = DescriptionTextbBox.Text,
+                Description = DescriptionTextBox.Text,
                 Type = TypeTextBox.Text,
                 FCAPrice = FCAPriceTextBox.Text
             };
-
-            
 
             using (SQLiteConnection connection = new SQLiteConnection(SparePartDB.databasePath))
             {
                 connection.Insert(sparePart);
             }
+
+            Close();
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
 
             Close();
         }

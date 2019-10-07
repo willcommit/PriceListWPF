@@ -66,6 +66,7 @@ namespace PriceList.Classes
                 sparePart.Description = sheet.Cells[row, 2].Text.Trim();
                 sparePart.Type = sheet.Cells[row, 3].Text.Trim();
                 sparePart.FCAPrice = sheet.Cells[row, 5].Text.Trim();
+                sparePart.Export = false;
 
                 parts.Add(sparePart);
             }        
