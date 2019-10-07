@@ -59,7 +59,7 @@
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
-                                         TextChanged="TextBox_TextChanged_Description"/>
+                                         TextChanged="TextBox_TextChanged_Type"/>
                                 <TextBlock>Type</TextBlock>
                             </StackPanel>
                         </DataTemplate>
@@ -70,7 +70,7 @@
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
-                                         TextChanged="TextBox_TextChanged_Type"/>
+                                         TextChanged="TextBox_TextChanged_Description"/>
                                 <TextBlock >Description</TextBlock>
                             </StackPanel>
                         </DataTemplate>
