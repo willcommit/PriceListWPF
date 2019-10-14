@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PriceList"
         mc:Ignorable="d"
-        Title="PartDetailWindow" Height="450" Width="500">
+        Title="Produktdetaljer" Height="450" Width="500">
 
     <Grid>
         <StackPanel Margin="10">
@@ -15,7 +15,7 @@
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Item Code: " VerticalAlignment="Center"></Label>
-                <TextBox Grid.Column="1" x:Name="ItemCodeTextBox" Margin="0,0,0,5" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" x:Name="ItemCodeTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -23,7 +23,7 @@
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Description: " VerticalAlignment="Center"></Label>
-                <TextBox Grid.Column="1" x:Name="DescriptionTextBox" Margin="0,0,0,5" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" x:Name="DescriptionTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Type: " VerticalAlignment="Center"></Label>
-                <TextBox Grid.Column="1" x:Name="TypeTextBox" Margin="0,0,0,5" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" x:Name="TypeTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -39,7 +39,7 @@
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Price: "></Label>
-                <TextBox Grid.Column="1" x:Name="FCAPriceTextBox" Margin="0,0,0,5"/>
+                <TextBox Grid.Column="1" x:Name="FCAPriceTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom"/>
             </Grid>
 
             <Grid Margin="0,20,0,0">

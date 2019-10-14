@@ -11,7 +11,7 @@
         <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>   -->
     <DockPanel>
         <Menu DockPanel.Dock="Top" Padding="0,3" Background="LightGray" >
-            <MenuItem Header="Fil">
+            <MenuItem Header="Arkiv">
                 <MenuItem Header="Lägg till produkt" Click="AddProduct_Click"/>
                 <Separator></Separator>
                 <MenuItem Header="Avsluta" Click="MenuItemExit_Click"/>
@@ -23,7 +23,6 @@
             <MenuItem Header="Importera">
                 <MenuItem Header="Importera CSV" Click="MenuItemImportExcel_Click"/>
                 <MenuItem Header="Importera Excel" Click="MenuItemImportExcel_Click"/>
-                <MenuItem Header="Importera Excel med lösenord" Click="MenuItemImportProtectedExcel_Click"/>
 
             </MenuItem>
             <MenuItem Header="Exportera">

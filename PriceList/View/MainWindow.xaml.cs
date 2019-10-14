@@ -60,18 +60,6 @@ namespace PriceList
             PopulateListView();
         }
         
-        private void MenuItemImportProtectedExcel_Click(object sender, RoutedEventArgs e)
-        {
-            Xlxs xlxs = new Xlxs();
-            xlxs.setFileName();
-            var package = xlxs.readExcel("fsa123a");
-
-            SparePartDB.parts.Clear();
-            xlxs.populatePartsList(package, SparePartDB.parts);
-            SparePartDB.PopulateDataBase();
-            MessageBox.Show("COMPLETE!");
-            PopulateListView();
-        }
 
         private void MenuItemExit_Click(object sender, RoutedEventArgs e)
         {
