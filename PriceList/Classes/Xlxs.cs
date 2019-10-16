@@ -53,7 +53,7 @@ namespace PriceList.Classes
             }
         }
 
-        public void populatePartsList(ExcelPackage package, List<SparePart> parts)
+        public void populatePartsList(ExcelPackage package, List<Product> products)
         {
             var sheet = package.Workbook.Worksheets.First();
 
@@ -61,15 +61,16 @@ namespace PriceList.Classes
 
             for (int row = 2; row < rowCount; row++)
             {
-                SparePart sparePart = new SparePart();
-                sparePart.ItemCode = sheet.Cells[row, 1].Text.Trim();
-                sparePart.Description = sheet.Cells[row, 2].Text.Trim();
-                sparePart.Type = sheet.Cells[row, 3].Text.Trim();
-                sparePart.FCAPrice = sheet.Cells[row, 5].Text.Trim();
-                sparePart.Export = false;
+                Product product = new Product();
+                product.ItemNo = sheet.Cells[row, 1].Text.Trim();
+                product.Model = sheet.Cells[row, 2].Text.Trim();
+                product.UnitPrice = Int32.Parse(sheet.Cells[row, 3].Text.Trim());
+                product.DiscountDealer = Int32.Parse(sheet.Cells[row, 5].Text.Trim());
+                product.DiscountMyndighet = Int32.Parse(sheet.Cells[row, 6].Text.Trim());
+                product.UnitCost = Int32.Parse(sheet.Cells[row, 8].Text.Trim());
 
-                parts.Add(sparePart);
-            }        
+                products.Add(product);
+            }      
         }
     }
 }

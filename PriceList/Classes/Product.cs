@@ -17,9 +17,11 @@ namespace PriceList.Classes
 
         public int UnitCost { get; set; }
         public int Markup { get; set; }
-        public int Discount { get; set; }
-        public int Amount { get; set; }
+        public int DiscountDealer { get; set; }
+        public int DiscountMyndighet { get; set; }
+        public int Quantity { get; set; }
         public int Customs { get; set; }
+
         public bool Selected { get; set; }
 
 
@@ -36,7 +38,7 @@ namespace PriceList.Classes
         public int PriceTotal
         {
             get { return priceTotal; }
-            set { priceTotal = UnitPrice * Amount; }
+            set { priceTotal = UnitPrice * Quantity; }
         }
 
         private int pricePerUnit;
@@ -44,13 +46,16 @@ namespace PriceList.Classes
         public int PricePerUnit
         {
             get { return pricePerUnit; }
-            set { pricePerUnit = UnitPrice * Amount; }
+            set { pricePerUnit = UnitPrice * Quantity; }
         }
-
 
         public Product()
         {
-            Amount = 0;
+            Description = " ";
+            VendorItemNo = " ";
+            Markup = 0;
+            Quantity = 0;
+            Customs = 0;
             Selected = false;
         }
     }

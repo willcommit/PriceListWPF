@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PriceList"
         mc:Ignorable="d"
-        Title="Prislista" Height="600" Width="1000">
+        Title="Prislista" Height="600" Width="1050">
 
     <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="2" Content="Edit Selected" Click="Edit_Click"/>-->
         <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>   -->
@@ -29,9 +29,10 @@
                 <MenuItem Header="Exportera till Navision"/>
                 <MenuItem Header="Exportera till Excel"/>
                 <MenuItem Header="Exportera till offertmall"/>
+                <MenuItem Header="Exportera till email"/>
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="sparePartDataGrid" AlternatingRowBackground="AliceBlue" CanUserAddRows="False"
+        <DataGrid x:Name="productDataGrid" AlternatingRowBackground="AliceBlue" CanUserAddRows="False"
                   AutoGenerateColumns="False" IsReadOnly="True">
             
             <DataGrid.ItemContainerStyle>
@@ -41,51 +42,116 @@
             </DataGrid.ItemContainerStyle>
             
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="EXPORT" Binding="{Binding Path=Export}"></DataGridCheckBoxColumn>
-                <DataGridTextColumn Binding="{Binding Path=ItemCode}">
+                <DataGridCheckBoxColumn Header="VALD" Binding="{Binding Path=Selected}"></DataGridCheckBoxColumn>
+                
+                <DataGridTextColumn Binding="{Binding Path=ItemNo}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
                                          TextChanged="TextBox_TextChanged_ItemCode"/>
-                                <TextBlock>Item Code</TextBlock>
+                                <TextBlock>Artikelnummer</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Type}">
+                
+                <DataGridTextColumn Binding="{Binding Path=Model}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
                                          TextChanged="TextBox_TextChanged_Type"/>
-                                <TextBlock>Type</TextBlock>
+                                <TextBlock>Benämning</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
+                
                 <DataGridTextColumn Binding="{Binding Path=Description}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
                                          TextChanged="TextBox_TextChanged_Description"/>
-                                <TextBlock >Description</TextBlock>
+                                <TextBlock >Beskrivning</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=FCAPrice}">
+                
+                <DataGridTextColumn Binding="{Binding Path=Quantity}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
-                                         TextChanged="TextBox_TextChanged_Price"/>
-                                <TextBlock>Price</TextBlock>
+                                         IsEnabled="False"/>
+                                <TextBlock>Antal</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=UnitCost}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         IsEnabled="False"/>
+                                <TextBlock>Cost</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=Markup}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         IsEnabled="False"/>
+                                <TextBlock>Marginal</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=DiscountDealer}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         IsEnabled="False"/>
+                                <TextBlock>Rabatt ÅF</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=UnitPrice}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         IsEnabled="False"/>
+                                <TextBlock>Pris/st.</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=TotalPrice}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="100"
+                                         IsEnabled="False"/>
+                                <TextBlock>Pris total</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

@@ -24,19 +24,19 @@ namespace PriceList
         public MainWindow()
         {
             InitializeComponent();
-            SparePartDB.SetDatabasePath();
+            ProductDB.SetDatabasePath();
             PopulateListView();
         }
 
         public void PopulateListView()
         {
-            SparePartDB.ReadDatabase();
+            ProductDB.ReadDatabase();
 
             try
             {
-                if (SparePartDB.parts != null)
+                if (ProductDB.products != null)
                 {
-                    sparePartDataGrid.ItemsSource = SparePartDB.parts;
+                    productDataGrid.ItemsSource = ProductDB.products;
                     //listSizeLabel.Content = sparePartDataGrid.Items.Count;
                 }
             }
@@ -53,9 +53,11 @@ namespace PriceList
             xlxs.setFileName();
             var package = xlxs.readExcel();
 
-            SparePartDB.parts.Clear();
-            xlxs.populatePartsList(package, SparePartDB.parts);
-            SparePartDB.PopulateDataBase();
+            ProductDB.products.Clear();
+
+            xlxs.populatePartsList(package, ProductDB.products);
+ 
+            ProductDB.PopulateDataBase();
             MessageBox.Show("COMPLETE!");
             PopulateListView();
         }
@@ -66,48 +68,40 @@ namespace PriceList
             Application.Current.Shutdown();
         }
 
-        private void TextBox_TextChanged_ItemCode(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged_ItemNo(object sender, TextChangedEventArgs e)
         {
             TextBox searchTextBox = sender as TextBox;
 
-            var filteredList = SparePartDB.parts.Where(p => p.ItemCode.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
-            sparePartDataGrid.ItemsSource = filteredList;
+            var filteredList = ProductDB.products.Where(p => p.ItemNo.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
+            productDataGrid.ItemsSource = filteredList;
+        }
+
+        private void TextBox_TextChanged_Model(object sender, TextChangedEventArgs e)
+        {
+            TextBox searchTextBox = sender as TextBox;
+
+            var filteredList = ProductDB.products.Where(p => p.Model.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
+            productDataGrid.ItemsSource = filteredList;
         }
 
         private void TextBox_TextChanged_Description(object sender, TextChangedEventArgs e)
         {
             TextBox searchTextBox = sender as TextBox;
 
-            var filteredList = SparePartDB.parts.Where(p => p.Description.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
-            sparePartDataGrid.ItemsSource = filteredList;
-        }
-
-        private void TextBox_TextChanged_Type(object sender, TextChangedEventArgs e)
-        {
-            TextBox searchTextBox = sender as TextBox;
-
-            var filteredList = SparePartDB.parts.Where(p => p.Type.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
-            sparePartDataGrid.ItemsSource = filteredList;
-        }
-
-        private void TextBox_TextChanged_Price(object sender, TextChangedEventArgs e)
-        {
-            TextBox searchTextBox = sender as TextBox;
-
-            var filteredList = SparePartDB.parts.Where(p => p.FCAPrice.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
-            sparePartDataGrid.ItemsSource = filteredList;
+            var filteredList = ProductDB.products.Where(p => p.Description.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
+            productDataGrid.ItemsSource = filteredList;
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            SparePart selectedSparePart = (SparePart)sparePartDataGrid.SelectedItem;
+            Product selectedProduct = (Product)productDataGrid.SelectedItem;
 
-            if (selectedSparePart != null)
+            if (selectedProduct != null)
             {
-                PartDetailWindow partDetailWindow = new PartDetailWindow(selectedSparePart);
-                partDetailWindow.ShowDialog();
+                ProductDetailWindow productDetailWindow = new ProductDetailWindow(selectedProduct);
+                productDetailWindow.ShowDialog();
                 PopulateListView();
-            }           
+            }
         }
 
         private void AddProduct_Click(object sender, RoutedEventArgs e)

@@ -106,7 +106,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\PartDetailWindow.xaml">
+    <Page Include="View\ProductDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,8 +115,8 @@
     <Compile Include="View\AddProductWindow.xaml.cs">
       <DependentUpon>AddProductWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PartDetailWindow.xaml.cs">
-      <DependentUpon>PartDetailWindow.xaml</DependentUpon>
+    <Compile Include="View\ProductDetailWindow.xaml.cs">
+      <DependentUpon>ProductDetailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
