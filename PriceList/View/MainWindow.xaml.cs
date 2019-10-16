@@ -58,7 +58,6 @@ namespace PriceList
             xlxs.populatePartsList(package, ProductDB.products);
  
             ProductDB.PopulateDataBase();
-            MessageBox.Show("COMPLETE!");
             PopulateListView();
         }
         
@@ -92,7 +91,7 @@ namespace PriceList
             productDataGrid.ItemsSource = filteredList;
         }
 
-        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        private void Row_RightClick(object sender, MouseButtonEventArgs e)
         {
             Product selectedProduct = (Product)productDataGrid.SelectedItem;
 

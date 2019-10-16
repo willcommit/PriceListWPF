@@ -28,24 +28,18 @@ namespace PriceList
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            SparePart sparePart = new SparePart()
+            Product product = new Product()
             {
-                ItemCode = ItemCodeTextBox.Text,
+                ItemNo = ItemNoTextBox.Text,
+                Model = ModelTextBox.Text,
                 Description = DescriptionTextBox.Text,
-                Type = TypeTextBox.Text,
-                FCAPrice = FCAPriceTextBox.Text
+                UnitCost = Int32.Parse(CostTextBox.Text)
             };
 
-            using (SQLiteConnection connection = new SQLiteConnection(SparePartDB.databasePath))
+            using (SQLiteConnection connection = new SQLiteConnection(ProductDB.databasePath))
             {
-                connection.Insert(sparePart);
+                connection.Insert(product);
             }
-
-            Close();
-        }
-
-        private void deleteBtn_Click(object sender, RoutedEventArgs e)
-        {
 
             Close();
         }

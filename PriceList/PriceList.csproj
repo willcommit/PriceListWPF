@@ -95,8 +95,6 @@
     <Compile Include="View\AskPasswordWindow.xaml.cs">
       <DependentUpon>AskPasswordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\SparePart.cs" />
-    <Compile Include="Classes\SparePartDB.cs" />
     <Compile Include="Classes\Xlxs.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

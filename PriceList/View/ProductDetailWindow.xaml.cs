@@ -19,31 +19,31 @@ namespace PriceList
     /// <summary>
     /// Interaction logic for NewPartsWindows.xaml
     /// </summary>
-    public partial class PartDetailWindow : Window
+    public partial class ProductDetailWindow : Window
     {
-        SparePart sparePart;
-        public PartDetailWindow(SparePart sparePart)
+        Product product;
+        public ProductDetailWindow(Product product)
         {
             InitializeComponent();
 
-            this.sparePart = sparePart;
+            this.product = product;
 
-            ItemCodeTextBox.Text = sparePart.ItemCode;
-            DescriptionTextBox.Text = sparePart.Description;
-            TypeTextBox.Text = sparePart.Type;
-            FCAPriceTextBox.Text = sparePart.FCAPrice;
+            ItemNoTextBox.Text = product.ItemNo;
+            ModelTextBox.Text = product.Model;
+            DescriptionTextBox.Text = product.Description;
+            CostTextBox.Text = product.UnitCost.ToString();
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            sparePart.ItemCode = ItemCodeTextBox.Text;
-            sparePart.Description = DescriptionTextBox.Text;
-            sparePart.Type = TypeTextBox.Text;
-            sparePart.FCAPrice = FCAPriceTextBox.Text;
+            product.ItemNo = ItemNoTextBox.Text;
+            product.Model = ModelTextBox.Text;
+            product.Description = DescriptionTextBox.Text;
+            product.UnitCost = Int32.Parse(CostTextBox.Text);
 
-            using (SQLiteConnection connection = new SQLiteConnection(SparePartDB.databasePath))
+            using (SQLiteConnection connection = new SQLiteConnection(ProductDB.databasePath))
             {
-                connection.Update(sparePart);
+                connection.Update(product);
             }
 
             Close();
@@ -51,9 +51,9 @@ namespace PriceList
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(SparePartDB.databasePath))
+            using (SQLiteConnection connection = new SQLiteConnection(ProductDB.databasePath))
             {
-                connection.Delete(sparePart);
+                connection.Delete(product);
             }
 
             Close();

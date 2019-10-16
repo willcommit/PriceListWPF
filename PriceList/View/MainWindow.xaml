@@ -18,7 +18,8 @@
             </MenuItem>
             
             <MenuItem Header="Inställningar">
-
+                <MenuItem Header="Uppdatera valuta"/>
+                <MenuItem Header="Välj databas"/>
             </MenuItem>
             <MenuItem Header="Importera">
                 <MenuItem Header="Importera CSV" Click="MenuItemImportExcel_Click"/>
@@ -33,42 +34,42 @@
             </MenuItem>
         </Menu>
         <DataGrid x:Name="productDataGrid" AlternatingRowBackground="AliceBlue" CanUserAddRows="False"
-                  AutoGenerateColumns="False" IsReadOnly="True">
+                  AutoGenerateColumns="False">
             
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
-                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    <EventSetter Event="MouseRightButtonDown" Handler="Row_RightClick"/>
                 </Style>
             </DataGrid.ItemContainerStyle>
             
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="VALD" Binding="{Binding Path=Selected}"></DataGridCheckBoxColumn>
                 
-                <DataGridTextColumn Binding="{Binding Path=ItemNo}">
+                <DataGridTextColumn Binding="{Binding Path=ItemNo}" IsReadOnly="True" >
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
-                                         TextChanged="TextBox_TextChanged_ItemCode"/>
+                                         TextChanged="TextBox_TextChanged_ItemNo"/>
                                 <TextBlock>Artikelnummer</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                
-                <DataGridTextColumn Binding="{Binding Path=Model}">
+
+                <DataGridTextColumn Binding="{Binding Path=Model}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
-                                         TextChanged="TextBox_TextChanged_Type"/>
+                                         TextChanged="TextBox_TextChanged_Model"/>
                                 <TextBlock>Benämning</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
-                
-                <DataGridTextColumn Binding="{Binding Path=Description}">
+
+                <DataGridTextColumn Binding="{Binding Path=Description}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -92,7 +93,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=UnitCost}">
+                <DataGridTextColumn Binding="{Binding Path=UnitCost}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -128,7 +129,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=UnitPrice}">
+                <DataGridTextColumn Binding="{Binding Path=UnitPrice}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -140,7 +141,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=TotalPrice}">
+                <DataGridTextColumn Binding="{Binding Path=PriceTotal}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>

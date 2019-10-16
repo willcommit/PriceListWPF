@@ -12,34 +12,35 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Item Code: " VerticalAlignment="Center"></Label>
-                <TextBox Grid.Column="1" x:Name="ItemCodeTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
+                <Label Grid.Column="0" Content="Artikelnummer: " VerticalAlignment="Center"></Label>
+                <TextBox Grid.Column="1" x:Name="ItemNoTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
+            </Grid>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Benämning: " VerticalAlignment="Center"></Label>
+                <TextBox Grid.Column="1" x:Name="ModelTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
+            </Grid>
+            <Grid Height="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Beskrivning: " VerticalAlignment="Top"></Label>
+                <TextBox Grid.Column="1" x:Name="DescriptionTextBox" VerticalAlignment="Top" Height="100" />
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Description: " VerticalAlignment="Center"></Label>
-                <TextBox Grid.Column="1" x:Name="DescriptionTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Type: " VerticalAlignment="Center"></Label>
-                <TextBox Grid.Column="1" x:Name="TypeTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom" />
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Price: "></Label>
-                <TextBox Grid.Column="1" x:Name="FCAPriceTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom"/>
+                <Label Grid.Column="0" Content="Cost: "></Label>
+                <TextBox Grid.Column="1" x:Name="CostTextBox" Margin="0,0,0,5" VerticalAlignment="Bottom"/>
             </Grid>
 
             <Grid Margin="0,20,0,0">

@@ -37,17 +37,11 @@ namespace PriceList.Classes
 
         public int PriceTotal
         {
-            get { return priceTotal; }
-            set { priceTotal = UnitPrice * Quantity; }
+            get { return priceTotal * Quantity; }
+            set { priceTotal = value; }
         }
 
-        private int pricePerUnit;
-
-        public int PricePerUnit
-        {
-            get { return pricePerUnit; }
-            set { pricePerUnit = UnitPrice * Quantity; }
-        }
+   
 
         public Product()
         {

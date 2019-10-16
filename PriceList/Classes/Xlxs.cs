@@ -64,6 +64,7 @@ namespace PriceList.Classes
                 Product product = new Product();
                 product.ItemNo = sheet.Cells[row, 1].Text.Trim();
                 product.Model = sheet.Cells[row, 2].Text.Trim();
+                product.Description = sheet.Cells[row, 10].Text.Trim();
                 product.UnitPrice = Int32.Parse(sheet.Cells[row, 3].Text.Trim());
                 product.DiscountDealer = Int32.Parse(sheet.Cells[row, 5].Text.Trim());
                 product.DiscountMyndighet = Int32.Parse(sheet.Cells[row, 6].Text.Trim());
