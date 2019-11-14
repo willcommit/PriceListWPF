@@ -1,4 +1,4 @@
-﻿using PriceList.Classes;
+﻿using PriceList.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

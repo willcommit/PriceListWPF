@@ -1,4 +1,5 @@
-﻿using PriceList.Classes;
+﻿using PriceList.Model;
+using PriceList.ViewModel.Helpers;
 using SQLite;
 using System;
 using System.Collections.Generic;

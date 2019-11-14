@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PriceList.Classes
+namespace PriceList.Model
 {
     public class Product
     {

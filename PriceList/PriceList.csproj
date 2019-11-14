@@ -78,10 +78,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\AskPasswordWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,12 +86,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Product.cs" />
-    <Compile Include="Classes\ProductDB.cs" />
-    <Compile Include="View\AskPasswordWindow.xaml.cs">
-      <DependentUpon>AskPasswordWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\Xlxs.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="ViewModel\AddProductVM.cs" />
+    <Compile Include="ViewModel\Commands\SearchCommand.cs" />
+    <Compile Include="ViewModel\Helpers\ProductDB.cs" />
+    <Compile Include="ViewModel\MainVM.cs" />
+    <Compile Include="ViewModel\ProductDetailVM.cs" />
+    <Compile Include="ViewModel\Helpers\Xlxs.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PriceList"
+        xmlns:vm="clr-namespace:PriceList.ViewModel" 
         mc:Ignorable="d"
         Title="Prislista" Height="600" Width="1050">
-
-    <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="2" Content="Edit Selected" Click="Edit_Click"/>-->
-        <!--<Button Margin="10,40" Grid.Column="1" Grid.Row="1" Content="Import Excel" Click="ImportExcel_Click"/>   -->
-    <DockPanel>
+    <Window.Resources>
+        <vm:MainVM x:Key="vm"/>
+    </Window.Resources>
+    
+    <DockPanel DataContext="{StaticResource vm}">
         <Menu DockPanel.Dock="Top" Padding="0,3" Background="LightGray" >
             <MenuItem Header="Arkiv">
                 <MenuItem Header="Lägg till produkt" Click="AddProduct_Click"/>
@@ -34,8 +36,7 @@
             </MenuItem>
         </Menu>
         <DataGrid x:Name="productDataGrid" AlternatingRowBackground="AliceBlue" CanUserAddRows="False"
-                  AutoGenerateColumns="False">
-            
+                  AutoGenerateColumns="False" DataContext="{Binding Product, Mode=TwoWay}">
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseRightButtonDown" Handler="Row_RightClick"/>
@@ -43,21 +44,22 @@
             </DataGrid.ItemContainerStyle>
             
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="VALD" Binding="{Binding Path=Selected}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Header="VALD" Binding="{Binding Selected}"></DataGridCheckBoxColumn>
                 
-                <DataGridTextColumn Binding="{Binding Path=ItemNo}" IsReadOnly="True" >
+                <DataGridTextColumn Binding="{Binding ItemNo}" IsReadOnly="True" >
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
                                 <TextBox Width="100"
-                                         TextChanged="TextBox_TextChanged_ItemNo"/>
+                                         DataContext="{StaticResource vm}"
+                                         Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}"/>
                                 <TextBlock>Artikelnummer</TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=Model}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -69,7 +71,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=Description}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -81,7 +83,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
                 
-                <DataGridTextColumn Binding="{Binding Path=Quantity}">
+                <DataGridTextColumn Binding="{Binding Quantity}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -93,7 +95,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=UnitCost}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding UnitCost}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -105,7 +107,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=Markup}">
+                <DataGridTextColumn Binding="{Binding Markup}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -117,7 +119,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=DiscountDealer}">
+                <DataGridTextColumn Binding="{Binding DiscountDealer}">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -129,7 +131,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=UnitPrice}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding UnitPrice}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -141,7 +143,7 @@
                     </DataGridTextColumn.HeaderTemplate>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Binding="{Binding Path=PriceTotal}" IsReadOnly="True">
+                <DataGridTextColumn Binding="{Binding PriceTotal}" IsReadOnly="True">
                     <DataGridTextColumn.HeaderTemplate>
                         <DataTemplate>
                             <StackPanel>

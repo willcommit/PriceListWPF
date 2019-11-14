@@ -9,8 +9,9 @@ using OfficeOpenXml.Drawing.Chart;
 using System.Globalization;
 using Microsoft.Win32;
 using System.Windows;
+using PriceList.Model;
 
-namespace PriceList.Classes
+namespace PriceList.ViewModel.Helpers
 {
     class Xlxs
     {
